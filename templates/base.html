@@ -1,0 +1,38 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<nav>
+<div class="nav-wrapper purple lighten-3">
+    <a href="{{ url_for('index') }}" class="brand-logo">Flaskr @Jerome</a>
+  <ul class="right">
+    {% if g.user %}
+    <li><a href="{{ url_for('crud') }}""><span>Users</span>
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+    {% else %}
+      <li><a href="{{ url_for('register') }}">S'enregistrer</a></li>
+      <li><a href="{{ url_for('login') }}">Connexion</a></li>
+    {% endif %}
+  </ul>
+    </div>
+</nav>
+<section class="content">
+<div class="container">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+</div>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{% block javascripts %}
+{% endblock %}

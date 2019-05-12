@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Users{% endblock %}
+
+{% block header %}
+  <h2>Liste des Users</h2>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="striped">
+        <tr class="">
+        <th class="">Name</th>
+        <th class="">Email</th>
+        <th class="">Actions</th>
+        </tr>
+    {% for user in users %}
+        <tr class="">
+            <td class="">{{ user['username'] }}</td>
+            <td class="">{{ user['email'] }}</td>
+            <td class="">
+                <a class="btn-floating purple lighten-3" href="{{ url_for('crud', user_id=user['id'], method='GET') }}" onclick="show()"><i class="material-icons md-18">account_circle</i></a>
+                <a class="btn-floating purple lighten-3" href=""><i class="material-icons md-18">update</i></a>
+                <a class="btn-floating purple lighten-3" href="{{ url_for('crud', user_id=user['id'], method='DELETE') }}"><i class="material-icons md-18">delete</i></a>
+            </td>
+        </tr>
+
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    function show() {
+        $.ajax({
+            url: "/template/show.html",
+            type: 'GET',
+            async: true,
+            success: console.log(event)
+        });
+    }
+
+</script>
+{% endblock %}

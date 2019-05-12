@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Connexion{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <form method="post">
+    <label for="email">Email</label>
+    <input name="email" id="email" required>
+    <label for="password">Mot de passe</label>
+    <input type="password" name="password" id="password" required>
+    <input class="waves-effect waves-light btn" type="submit" value="Connexion">
+  </form>
+</div>
+{% endblock %}

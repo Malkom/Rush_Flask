@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}User's Profile{% endblock %}
+
+{% block header %}
+  <h2>{{ user['username'] }}'s Profile</h2>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="striped">
+        <tr class="">
+            <th class="">User n° : </th>
+            <td>{{ user['id'] }}</td>
+        </tr>
+
+        <tr class="">
+            <th class="">Name : </th>
+            <td>{{ user['username'] }}</td>
+        </tr>
+
+        <tr class="">
+            <th class="">Email : </th>
+            <td>{{ user['email'] }}</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
